@@ -48,7 +48,6 @@ class households(View):
         wardNo = request.POST.get('wardNo')
         adhar = request.POST.get('adhar')
         sex = request.POST.get('sex')
-        sex = SEX_CHOICES[int(sex)][1]
         dob  = request.POST.get('dob')
         age = request.POST.get('age')
         religion = request.POST.get('religion')

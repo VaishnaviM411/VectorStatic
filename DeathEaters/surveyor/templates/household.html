@@ -50,9 +50,9 @@
                                             <div class="form-group">
                                                 <label for="HeadSex"> Sex (Head): </label>
                                                 <select name="HeadSex" class="form-control" id="HeadSex">
-                                                    <option value="F">Female</option>
-                                                    <option value="M">Male</option>
-                                                    <option value="O">Other</option>
+                                                    <option value="1">Female</option>
+                                                    <option value="2">Male</option>
+                                                    <option value="3">Other</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -73,9 +73,9 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="lastMigrated">Birth : </label><br>
-                                                <input type="radio" id="rural" name="literate" value="birthPlace">
+                                                <input type="radio" id="rural" value="literate" name="birthPlaceBool">
                                                 <label for="Within India">Within India</label><br>
-                                                <input type="radio" id="urban" name="literate" value="birthPlace">
+                                                <input type="radio" id="urban" value="illiterate" name="birthPlaceBool">
                                                 <label for="outside India">outside India</label><br>
                                                 </select>
                                             </div>
@@ -101,9 +101,9 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="lastMigrated">Residence : </label><br>
-                                                <input type="radio" id="rural" name="literate" value="placeOfLastResidenceBool">
+                                                <input type="radio" id="rural" value="placeOfLastResidenceBool" name="placeOfLastResidenceBool">
                                                 <label for="Within India">Within India</label><br>
-                                                <input type="radio" id="urban" name="literate" value="placeOfLastResidenceBool">
+                                                <input type="radio" id="urban" value="placeOfLastResidenceBool" name="placeOfLastResidenceBool">
                                                 <label for="outside India">outside India</label><br>
                                                 </select>
                                             </div>
@@ -113,9 +113,9 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="lastMigrated">Last migrated : </label><br>
-                                                <input type="radio" id="rural" name="literate" value="lastMigrated">
+                                                <input type="radio" id="rural" value="lastMigrated" name="lastMigrated">
                                                 <label for="Within India">Within India</label><br>
-                                                <input type="radio" id="urban" name="literate" value="lastMigrated">
+                                                <input type="radio" id="urban" value="lastMigrated" name="lastMigrated">
                                                 <label for="outside India">outside India</label><br>
                                                 </select>
                                             </div>
@@ -144,12 +144,12 @@
                                             <div class="form-group">
                                                 <label for="religion">Religion choices :</label>
                                                 <select name="religion" id="religion" class="form-control">
-                                                    <option value="H">Hindu</option>
-                                                    <option value="M">Muslim</option>
-                                                    <option value="C">Christian</option>
-                                                    <option value="S">Sikh</option>
-                                                    <option value="B">Buddhist</option>
-                                                    <option value="J">Jain</option>
+                                                    <option value="1">Hindu</option>
+                                                    <option value="2">Muslim</option>
+                                                    <option value="3">Christian</option>
+                                                    <option value="4">Sikh</option>
+                                                    <option value="5">Buddhist</option>
+                                                    <option value="6">Jain</option>
 
                                                 </select>
                                             </div>
@@ -176,9 +176,9 @@
                                             <div class="form-group">
                                                 <label for="scst">Cast choices :</label>
                                                 <select name="scst" id="scst" class="form-control">
-                                                    <option value="SC">Scheduled-Caste</option>
-                                                    <option value="ST">Scheduled-Tribe</option>
-                                                    <option value="NA">None</option>
+                                                    <option value="1">Scheduled-Caste</option>
+                                                    <option value="2">Scheduled-Tribe</option>
+                                                    <option value="3">None</option>
 
                                                 </select>
                                             </div>
