@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import HouseHolds
+from .models import HouseListing
 
-# Register your models here.
+admin.site.register(HouseHolds)
+
+admin.site.register(HouseListing)

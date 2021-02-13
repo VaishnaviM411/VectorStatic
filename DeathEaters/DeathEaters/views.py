@@ -21,16 +21,25 @@ class Login(View):
         return render(request,template_name)
 
     def post(self, request, template_name='login.html'):
-        message = {}
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username,password=password)
+        group = None
         if user is not None:
-            login(request,user)
-            message['user']=user
+            if user.is_active:
+                login(request, user)
+                group = user.groups.all()[0].name
+                if group == 'surveyor_group':
+                    return redirect('surveyor:surveyorPage')
+                if group == 'analyst_group':
+                    return redirect('analyst:analystPage')
+                else:
+                    return render(request, 'home.html')
+            else:
+                return render(request, 'login.html', {'error_message': 'Your account has been disabled'})
         else:
-            message['message']='User not authenticated'        
-        return render(request,template_name='household.html')
+            return render(request, 'login.html', {'error_message': 'Invalid Login'})
+
 
 
 class Logout(View):
@@ -38,9 +47,7 @@ class Logout(View):
         logout(request)
         return render(request, 'home.html')
         
-class surveyorPage(View):
-    def get(self, request):
-        return render(request, 'surveyorPage.html')
+
 
 class analystPage(View):
     def get(self, request):
