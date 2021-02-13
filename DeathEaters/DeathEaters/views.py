@@ -17,8 +17,20 @@ class home(View):
         return render(request, 'home.html')
 
 class Login(View):
-    def get(self, request):
-        return render(request, 'login.html')
+    def get(self, request, template_name='login.html'):
+        return render(request,template_name)
+
+    def post(self, request, template_name='login.html'):
+        message = {}
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username,password=password)
+        if user is not None:
+            login(request,user)
+            message['user']=user
+        else:
+            message['message']='User not authenticated'        
+        return render(request,template_name='household.html')
 
 
 class Logout(View):
@@ -33,4 +45,4 @@ class surveyorPage(View):
 class analystPage(View):
     def get(self, request):
         return render(request, 'analystPage.html')
-     
+

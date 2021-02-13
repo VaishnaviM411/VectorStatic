@@ -35,38 +35,23 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-              <i class="material-icons">apps</i> Components
-            </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <a href="../index.html" class="dropdown-item">
-                <i class="material-icons">layers</i> All Components
-              </a>
-              <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Documentation
-              </a>
-            </div>
+            <a href="{% url 'Login' %}" class="nav-link"><span style="font-size:1rem">Surveyor Page</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.creative-tim.com/product/material-kit-pro" target="_blank">
-              <i class="material-icons">unarchive</i> Upgrade to PRO
-            </a>
+          <li class="dropdown nav-item">
+            <a href="{% url 'Login' %}" class="nav-link"><span style="font-size:1rem">Analyst Page</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank" data-original-title="Follow us on Twitter" rel="nofollow">
-              <i class="fa fa-twitter"></i>
-            </a>
+          {% if user.is_authenticated %}
+          <li class="dropdown nav-item">
+            {{user.first_name}} {{user.last_name}}
           </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank" data-original-title="Like us on Facebook" rel="nofollow">
-              <i class="fa fa-facebook-square"></i>
-            </a>
+          <li class="dropdown nav-item">
+            <a href="{% url 'Logout' %}" class="nav-link"><span style="font-size:1rem">LOGOUT</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank" data-original-title="Follow us on Instagram" rel="nofollow">
-              <i class="fa fa-instagram"></i>
-            </a>
+          {% else %}
+          <li class="dropdown nav-item">
+            <a href="{% url 'Login' %}" class="nav-link"><span style="font-size:1rem">LOGIN</span></a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -76,7 +61,8 @@
       <div class="row">
         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
           <div class="card card-login">
-            <form class="form" method="" action="">
+            <form role="form" action="" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
               <div class="card-header card-header-primary text-center">
                 <h4 class="card-title">Login</h4>
               </div><br>
@@ -87,7 +73,7 @@
                       <i class="material-icons">assignment_ind</i>
                     </span>
                   </div>
-                  <input type="email" class="form-control" placeholder="Email...">
+                  <input type="text" class="form-control" placeholder="Username" name="username">
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -95,11 +81,15 @@
                       <i class="material-icons">lock_outline</i>
                     </span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Password...">
+                  <input type="password" class="form-control" placeholder="Password" name="password">
                 </div>
               </div>
               <div class="footer text-center">
-                <a href="#pablo" class="btn btn-primary btn-wd btn-lg" style="margin-bottom:20%; margin-top: 0%;">Get Started</a>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-success">Login</button>
+                  </div>
+              </div>
               </div>
             </form>
           </div>

@@ -50,25 +50,13 @@
             {{user.first_name}} {{user.last_name}}
           </li>
           <li class="dropdown nav-item">
-            {% url 'Logout' %}
+            <a href="{% url 'Logout' %}" class="nav-link"><span style="font-size:1rem">LOGOUT</span></a>
           </li>
           {% else %}
           <li class="dropdown nav-item">
             <a href="{% url 'Login' %}" class="nav-link"><span style="font-size:1rem">LOGIN</span></a>
           </li>
           {% endif %}
-            
-            <!--<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-              <i class="material-icons">apps</i> Components
-            </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <a href="../index.html" class="dropdown-item">
-                <i class="material-icons">layers</i> All Components
-              </a>
-              <a href="#" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Documentation
-              </a>
-            </div>-->
         </ul>
       </div>
     </div>
