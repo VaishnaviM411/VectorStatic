@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('homePage/',views.home.as_view(),name = 'homepage'),
     path('loginPage/',views.login.as_view(),name = 'loginpage'),
+    path('logoutPage/',view.logout.as_view(),name= 'logoutpage'),
     path('houseListing/',views.houselisting.as_view(),name ='houselisting'),
     path('houseHolds/',views.households.as_view(),name='households'),
 ]

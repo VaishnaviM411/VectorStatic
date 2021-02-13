@@ -16,6 +16,8 @@ class home(View):
     
 
 class login(View):
+
+class logout(View):
      
 class houselisting(View):
     
