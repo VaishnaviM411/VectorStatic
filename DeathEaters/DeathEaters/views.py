@@ -6,20 +6,24 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
-from DeathEaters.models import HouseHolds 
-from DeathEaters.models import HouseListing
+from surveyor.models import HouseHolds 
+from surveyor.models import HouseListing
 from django.contrib.auth.hashers import make_password
 from django.core.files.storage import FileSystemStorage
 import shortuuid
 
 class home(View):
-    
+    def get(self, request):
+        return render(request, 'home.html')
 
-class login(View):
+class Login(View):
+    def get(self, request):
+        return render(request, 'login.html')
 
-class logout(View):
+
+class Logout(View):
+    def get(self, request):
+        return render(request, 'home.html')
      
-class houselisting(View):
-    
-class households(View):
+
      
