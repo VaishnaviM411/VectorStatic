@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/img/profile_city.jpg')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="title">Surveyor Mode.</h1>
+          <h4>Fill up the Census 2021 Forms for House Listings & House-Holds. For a household and per individual.</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main main-raised">
+    <div class="container">
+      <div class="section text-center">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="title">Survey Forms</h2>
+            <h5 class="description">Fill the House Holding and House Listing Forms of the Populus.</h5>
+          </div>
+        </div>
+        <br><br>
+        <div class="features">
+          <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-icon card-header-rose">
+                      <div class="card-icon">
+                        <i class="material-icons">source</i>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">House Listing</h4>
+                            Form for every House of the Populus.
+                    </div>
+                    <br>
+                    <div class="container">
+                  <a href="/" target="_blank" class="btn btn-rose">
+                    Open House Listing Form
+                  </a></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                  <div class="card-header card-header-icon card-header-rose">
+                    <div class="card-icon">
+                      <i class="material-icons">
+                        wysiwyg</i>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                      <h4 class="card-title">House Hold</h4>
+                          Form for Individual Members data of the Populus.
+                  </div>
+                  <br>
+                  <div class="container">
+                  <a href="/" target="_blank" class="btn btn-rose">
+                    Open House Hold Form
+                  </a></div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

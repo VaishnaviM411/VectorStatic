@@ -25,4 +25,12 @@ class Logout(View):
     def get(self, request):
         logout(request)
         return render(request, 'home.html')
+        
+class surveyorPage(View):
+    def get(self, request):
+        return render(request, 'surveyorPage.html')
+
+class analystPage(View):
+    def get(self, request):
+        return render(request, 'analystPage.html')
      
