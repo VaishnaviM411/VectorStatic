@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
     <div class="page-header header-filter" data-parallax="true"
         style="background-image: url('../assets/img/city-profile.jpg');"></div>
@@ -14,42 +13,43 @@
                             <div class="card-header">
                                 <h2 class="title" align="center">House Hold</h2>
                             </div>
-
+                            <br>
+                            <p style="text-align: center; font-size: 1rem" class="text-primary">{{error_message}}</p>
+                            <br>
                             <div class="card-body">
-                                <form role="form" method="post" action="">
+                                <form role="form" method="post" action="post">
                                     {% csrf_token %}
 
                                     <div class="row">
                                         <div class="col-md-6 pr-md-1">
                                             <div class="form-group">
                                                 <label for="BuildingNo">Serial Number:</label>
-                                                <input id="BuildingNo" type="text" name="BuildingNo"
-                                                    class="form-control">
+                                                <input id="BuildingNo" type="text" name="BuildingNo" class="form-control" required="required"/>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="Name">First Name: </label>
-                                                <input id="HeadName" type="text" class="form-control" name="fname">
+                                                <input id="HeadName" type="text" class="form-control" name="fname" required="required" />
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="MiddleName">Middle Name: </label>
-                                                <input id="MiddleName" type="text" class="form-control" name="mname">
+                                                <input id="MiddleName" type="text" class="form-control" name="mname"   required="required" />
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="LastName">Last Name: </label>
-                                                <input id="LastName" type="text" class="form-control" name="lname">
+                                                <input id="LastName" type="text" class="form-control" name="lname" required="required" />
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="HeadSex"> Sex (Head): </label>
-                                                <select name="HeadSex" class="form-control" id="HeadSex">
+                                                <select name="HeadSex" class="form-control" id="HeadSex"  required="required">
                                                     <option value="1">Female</option>
                                                     <option value="2">Male</option>
                                                     <option value="3">Other</option>
@@ -59,24 +59,26 @@
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="DOB">DOB : </label>
-                                                <input id="DOB" type="date" class="form-control" name="dob">
+                                                <input id="DOB" type="date" class="form-control" name="dob"  required="required" />
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
-                                                <label for="birthPlace">Birthplace : </label>
-                                                <input id="birthPlace" type="text" class="form-control"
-                                                    name="birthPlace">
+                                                <label for="birthPlace">Birthplace :</label>
+                                                <input id="birthPlace" type="text" class="form-control" name="birthPlace"  required="required" />
                                             </div>
                                         </div>
 
+
+
+
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
-                                                <label for="lastMigrated">Birth : </label><br>
-                                                <input type="radio" id="rural" value="literate" name="birthPlaceBool">
-                                                <label for="Within India">Within India</label><br>
-                                                <input type="radio" id="urban" value="illiterate" name="birthPlaceBool">
-                                                <label for="outside India">outside India</label><br>
+                                                <label for="birthPlaceBool">Birth : </label><br>
+                                                <input type="radio" id="birthPlaceBool" value="true" name="birthPlaceBool"  required="required"/>
+                                                <label for="birthPlaceBool">Within India</label><br>
+                                                <input type="radio" id="birthPlaceBool" value="false" name="birthPlaceBool" required="required" /> 
+                                                <label for="birthPlaceBool">outside India</label><br>
                                                 </select>
                                             </div>
                                         </div>
@@ -84,15 +86,14 @@
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="Age">Age : </label>
-                                                <input id="Age" type="text" class="form-control" name="age">
+                                                <input id="Age" type="text" class="form-control" name="age" required="required" />
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="placeOfLastResidence">Place of last residence : </label>
-                                                <input id="placeOfLastResidence" type="text" class="form-control"
-                                                    name="placeOfLastResidence">
+                                                <input id="placeOfLastResidence" type="text" class="form-control" name="placeOfLastResidence" required="required" />
                                             </div>
                                         </div>
 
@@ -100,11 +101,11 @@
 
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
-                                                <label for="lastMigrated">Residence : </label><br>
-                                                <input type="radio" id="rural" value="placeOfLastResidenceBool" name="placeOfLastResidenceBool">
-                                                <label for="Within India">Within India</label><br>
-                                                <input type="radio" id="urban" value="placeOfLastResidenceBool" name="placeOfLastResidenceBool">
-                                                <label for="outside India">outside India</label><br>
+                                                <label for="placeOfLastResidenceBool">Residence : </label><br>
+                                                <input type="radio" id="placeOfLastResidenceBool" name="placeOfLastResidenceBool" value="true" />
+                                                <label for="placeOfLastResidenceBool">Within India</label><br>
+                                                <input type="radio" id="placeOfLastResidenceBool" name="placeOfLastResidenceBool" value="false"/>
+                                                <label for="placeOfLastResidenceBool">outside India</label><br>
                                                 </select>
                                             </div>
                                         </div>
@@ -113,15 +114,15 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="lastMigrated">Last migrated : </label><br>
-                                                <input type="radio" id="rural" value="lastMigrated" name="lastMigrated">
-                                                <label for="Within India">Within India</label><br>
-                                                <input type="radio" id="urban" value="lastMigrated" name="lastMigrated">
-                                                <label for="outside India">outside India</label><br>
+                                                <input type="radio" id="lastMigrated" name="lastMigrated" value="true"/>
+                                                <label for="lastMigrated">Within India</label><br>
+                                                <input type="radio" id="lastMigrated" name="lastMigrated" value="false"/>
+                                                <label for="lastMigrated">outside India</label><br>
                                                 </select>
                                             </div>
                                         </div>
 
-                                        
+
 
                                     </div>
 
@@ -129,7 +130,7 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="martialStatus">Martial Status : </label>
-                                                <select name="martialStatus" id="martialStatus" class="form-control">
+                                                <select name="martialStatus" id="martialStatus" class="form-control" required="required">
                                                     <option value="1">Never-Married</option>
                                                     <option value="2">Currently-Married'</option>
                                                     <option value="3">Widowed</option>
@@ -143,7 +144,7 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="religion">Religion choices :</label>
-                                                <select name="religion" id="religion" class="form-control">
+                                                <select name="religion" id="religion" class="form-control" required="required">
                                                     <option value="1">Hindu</option>
                                                     <option value="2">Muslim</option>
                                                     <option value="3">Christian</option>
@@ -158,7 +159,7 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="disability">Disability choices :</label>
-                                                <select name="disability" id="disability" class="form-control">
+                                                <select name="disability" id="disability" class="form-control" required="required"> 
                                                     <option value="1">Seeing</option>
                                                     <option value="2">Hearing</option>
                                                     <option value="3">Speech</option>
@@ -175,7 +176,7 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="scst">Cast choices :</label>
-                                                <select name="scst" id="scst" class="form-control">
+                                                <select name="scst" id="scst" class="form-control" required="required">
                                                     <option value="1">Scheduled-Caste</option>
                                                     <option value="2">Scheduled-Tribe</option>
                                                     <option value="3">None</option>
@@ -186,38 +187,26 @@
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="motherTongue">Mother Tongue : </label>
-                                                <input id="motherTongue" type="text" class="form-control"
-                                                    name="motherTongue">
+                                                <input id="motherTongue" type="text" class="form-control" name="motherTongue"required="required"/>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
-                                                <label for="literate">Finding work :</label><br>
-                                                <input type="radio" id="rural" name="literate" value="literate">
-                                                <label for="illiterate">Literate</label><br>
-                                                <input type="radio" id="urban" name="illiterate" value="illiterate">
-                                                <label for="No">Illiterate</label><br>
+                                                <label for="statusOfAttendance">State of Attendence : </label><br>
+                                                <input type="radio" id="statusOfAttendance" name="statusOfAttendance" value="true"/>
+                                                <label for="statusOfAttendance">Public</label><br>
+                                                <input type="radio" id="statusOfAttendance" name="statusOfAttendance" value="false"/>
+                                                <label for="statusOfAttendance">Private</label><br>
                                                 </select>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4 pr-md-1">
-                                            <div class="form-group">
-                                                <label for="literate">State of Attendence : </label><br>
-                                                <input type="radio" id="rural" value="literate" name="statusOfAttendance">
-                                                <label for="illiterate">Literate</label><br>
-                                                <input type="radio" id="urban" value="illiterate" name="statusOfAttendance">
-                                                <label for="No">Illiterate</label><br>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
+
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="highestEDUAttained">Highest Qualification :</label>
-                                                <select name="highestEDUAttained" id="highestEDUAttained"
-                                                    class="form-control">
+                                                <select name="highestEDUAttained" id="highestEDUAttained" class="form-control" required="required">
                                                     <option value="1">School</option>
                                                     <option value="2">College</option>
                                                     <option value="3">Vocational</option>
@@ -233,7 +222,7 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="workedAs">Category of worker : </label>
-                                                <select name="workedAs" id="workedAs" class="form-control">
+                                                <select name="workedAs" id="workedAs" class="form-control" required="required" > 
                                                     <option value="1">Cultivator</option>
                                                     <option value="2">Agricultural-Labourer</option>
                                                     <option value="3">Work In household industry</option>
@@ -246,7 +235,7 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="workedLike">Type of worker :</label>
-                                                <select name="workedLike" id="workedLike" class="form-control">
+                                                <select name="workedLike" id="workedLike" class="form-control" required="required" >
                                                     <option value="1">Main-Worker</option>
                                                     <option value="2">Marginal-Worker</option>
                                                     <option value="3">Non-Worker</option>
@@ -258,7 +247,7 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="nonWorkerType">Non worker type : </label>
-                                                <select name="nonWorkerType" id="workerClass" class="form-control">
+                                                <select name="nonWorkerType" id="workerClass" class="form-control required="required>
                                                     <option value="1">Student</option>
                                                     <option value="2">Household-Duties</option>
                                                     <option value="3">Dependent</option>
@@ -271,13 +260,14 @@
                                             </div>
                                         </div>
 
+
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="findingWork">Finding work :</label><br>
-                                                <input type="radio" id="rural" name="findingWork" value="findingWork">
-                                                <label for="Yes">Yes</label><br>
-                                                <input type="radio" id="urban" name="findingWork" value="findingWork">
-                                                <label for="No">No</label><br>
+                                                <input type="radio" id="findingWork" name="findingWork" value="true">
+                                                <label for="findingWork">Yes</label><br>
+                                                <input type="radio" id="findingWork" name="findingWork" value="false">
+                                                <label for="findingWork">No</label><br>
                                                 </select>
                                             </div>
                                         </div>
@@ -285,16 +275,14 @@
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="describeWork">Describe Work : </label>
-                                                <input id="describeWork" type="text" class="form-control"
-                                                    name="describeWork">
+                                                <input id="describeWork" type="text" class="form-control" name="describeWork" />
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="industryType">Industry type : </label>
-                                                <input id="industryType" type="text" class="form-control"
-                                                    name="industryType">
+                                                <input id="industryType" type="text" class="form-control" name="industryType" />
                                             </div>
                                         </div>
 
@@ -302,7 +290,7 @@
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="modeOfTravel">Mode of travel : </label>
-                                                <select name="modeOfTravel" id="modeOfTravel" class="form-control">
+                                                <select name="modeOfTravel" id="modeOfTravel" class="form-control" required="required">
                                                     <option value="1">On Foot</option>
                                                     <option value="2">Bicycle</option>
                                                     <option value="3">Moped/Scooter/Motor-Cycle</option>
@@ -318,8 +306,7 @@
                                         <div class="col-md-6 pl-md-1">
                                             <div class="form-group">
                                                 <label for="disOfTravelInKm">Distance travelled for work : </label>
-                                                <input id="disOfTravelInKm" type="text" class="form-control"
-                                                    name="disOfTravelInKm">
+                                                <input id="disOfTravelInKm" type="text" class="form-control" name="disOfTravelInKm"required="required" />
                                             </div>
                                         </div>
 
@@ -336,13 +323,15 @@
                                             </div>
                                         </div>
 
+
+
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="cameFrom">Came from : </label><br>
-                                                <input type="radio" id="rural" name="cameFrom" value="cameFrom">
-                                                <label for="rural">Rural</label><br>
-                                                <input type="radio" id="urban" name="cameFrom" value="cameFrom">
-                                                <label for="urban">Urban</label><br>
+                                                <input type="radio" id="cameFrom" name="cameFrom" value="true">
+                                                <label for="cameFrom">Rural</label><br>
+                                                <input type="radio" id="cameFrom" name="cameFrom" value="false">
+                                                <label for="cameFrom">Urban</label><br>
 
                                                 </select>
                                             </div>
@@ -353,29 +342,29 @@
                                             <div class="form-group">
                                                 <label for="durOfStayAfterMigration">Duration of stay after migration :
                                                 </label>
-                                                <input id="durOfStayAfterMigration" type="Number" class="form-control"
-                                                    name="durOfStayAfterMigration">
+                                                <input id="durOfStayAfterMigration" type="Number" class="form-control" name="durOfStayAfterMigration" required="required" />
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="curChildren">Number Of current : </label>
-                                                <input id="curChildren" type="Number" class="form-control"
-                                                    name="curChildren">
+                                                <input id="curChildren" type="Number" class="form-control" name="curChildren"  required="required"/>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label for="totChildren">Number Of Married Couples: </label>
-                                                <input id="totChildren" type="Number" class="form-control"
-                                                    name="totChildren">
+                                                <input id="totChildren" type="Number" class="form-control" name="totChildren" required="required"/>
                                             </div>
                                         </div>
 
 
                                     </div>
+
+
+
 
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-fill btn-primary">Submit</button>
@@ -385,9 +374,12 @@
 
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
         </div>
     </div>
     </div>
-{% endblock %}
+    {% endblock %}

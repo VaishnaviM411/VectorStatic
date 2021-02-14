@@ -40,14 +40,14 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <li class="dropdown nav-item">
-            <a href="{% url 'Login' %}" class="nav-link"><span style="font-size:1rem">Surveyor Page</span></a>
+            <a href="{% url 'surveyor:surveyorPage' %}" class="nav-link"><span style="font-size:1rem">Surveyor Page</span></a>
           </li>
           <li class="dropdown nav-item">
-            <a href="{% url 'Login' %}" class="nav-link"><span style="font-size:1rem">Analyst Page</span></a>
+            <a href="{% url 'analyst:analystPage' %}" class="nav-link"><span style="font-size:1rem">Analyst Page</span></a>
           </li>
           {% if user.is_authenticated %}
           <li class="dropdown nav-item">
-            {{user.first_name}} {{user.last_name}}
+            <span style="font-size:1rem; text-transform:uppercase" class="nav-link">{{user.first_name}} {{user.last_name}}</span>
           </li>
           <li class="dropdown nav-item">
             <a href="{% url 'Logout' %}" class="nav-link"><span style="font-size:1rem">LOGOUT</span></a>
