@@ -1,0 +1,463 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-header header-filter" data-parallax="true"
+  style="background-image: url('../assets/img/city-profile.jpg');"></div>
+<div class="main main-raised">
+  <div class="profile-content">
+    <div class="container">
+
+
+      <div class="row container">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="title" align="center" style="color:purple;">House Listing Queries</h2>
+            </div>
+            <br>
+            <p style="text-align: center; font-size: 1rem" class="text-primary">{{error_message}}</p>
+            <br>
+            <div class="card-body">
+              <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="row">
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="BuildingNo">Building Number ("ALL" for All):</label>
+                      <input id="BuildingNo" type="text" name="BuildingNo" class="form-control" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-md-1">
+                    <div class="form-group">
+                      <label for="CensusHouseNo">House Number ("ALL" for All):</label>
+                      <input id="CensusHouseNo" type="text" name="CensusHouseNo" class="form-control" required>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="FloorMaterial">Floor Material:</label>
+                      <select name="FloorMaterial" id="FloorMaterial" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Mud</option>
+                        <option value="2">Wood/bamboo</option>
+                        <option value="3">Burnt brick</option>
+                        <option value="4">Stone</option>
+                        <option value="5">Cement</option>
+                        <option value="6">Mosaic/floor tiles</option>
+                        <option value="7">Any other</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="WallMaterial">Wall Material:</label>
+                      <select name="WallMaterial" id="WallMaterial" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Grass/thatch/bamboo</option>
+                        <option value="2">Plastic/polythene</option>
+                        <option value="3">Mud/unburnt brick</option>
+                        <option value="4">Wood</option>
+                        <option value="5">Stone not packed with mortar</option>
+                        <option value="6">Stone packed with mortar</option>
+                        <option value="7">G.I/metal/asbestos sheets</option>
+                        <option value="8">Burnt brick</option>
+                        <option value="9">Concrete</option>
+                        <option value="0">Any other</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="RoofMaterial">Roof Material:</label>
+                      <select name="RoofMaterial" id="RoofMaterial" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Grass/ thatch/ bamboo/ wood/ mud</option>
+                        <option value="2">Plastic/ polythene</option>
+                        <option value="3">Hand made tiles</option>
+                        <option value="4">Machine made tiles</option>
+                        <option value="5">Burnt brick</option>
+                        <option value="6">Stone</option>
+                        <option value="7">Slate</option>
+                        <option value="8">G.I./metal/asbestos sheets</option>
+                        <option value="9">Concrete</option>
+                        <option value="0">Any other</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="UseOfHouse">Use Of House:</label>
+                      <select name="UseOfHouse" id="UseOfHouse" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Residence</option>
+                        <option value="2">Residence-cum-other use</option>
+                        <option value="3">Shop/ office</option>
+                        <option value="4">School/ college</option>
+                        <option value="5">Hotel/ lodge/ guest house</option>
+                        <option value="6">Hospital/ dispensary</option>
+                        <option value="7">Factory/ workshop/ workshed</option>
+                        <option value="8">Place of worship</option>
+                        <option value="9">Other non-residential use</option>
+                        <option value="0">Any other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="TotalResidents">Total Residents (-1 for All): </label>
+                      <input id="TotalResidents" type="Number" class="form-control" name="TotalResidents" required>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="HeadName">Head Name ("ALL" for All): </label>
+                      <input id="HeadName" type="text" class="form-control" name="HeadName" required>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="HeadCaste">Head Caste: </label>
+                      <select id="HeadCaste" class="form-control" name="HeadCaste" required>
+                        <option value="ALL">All</option>
+                        <option value="1">SC</option>
+                        <option value="2">ST</option>
+                        <option value="3">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-md-1">
+                    <div class="form-group">
+                      <label for="HeadSex"> Sex (Head): </label>
+                      <select id="HeadSex" class="form-control" name="HeadSex" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Female</option>
+                        <option value="2">Male</option>
+                        <option value="3">Other</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                </div>
+
+                <br>
+
+                <div class="row">
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="Ownership">House Ownership: </label>
+                      <select name="Ownership" id="Ownership" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Owned</option>
+                        <option value="2">Rented but has own house elsewhere</option>
+                        <option value="3">Rented and does not own any house</option>
+                        <option value="4">Any other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-md-1">
+                    <div class="form-group">
+                      <label for="DwellingRooms"> Dwelling Rooms (-1 for All): </label>
+                      <input id="DwellingRooms" type="Number" class="form-control" name="DwellingRooms" required>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="MarriedCouples">Number Of Married Couples (-1 for All): </label>
+                      <input id="MarriedCouples" type="Number" class="form-control" name="MarriedCouples" required>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="row">
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="DrinkingWaterSource">Drinking Water Sources:</label>
+                      <select name="DrinkingWaterSource" id="DrinkingWaterSource" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Tap water from source</option>
+                        <option value="2">Tap water from un-treated source</option>
+                        <option value="3">Well</option>
+                        <option value="4">Hand Pump</option>
+                        <option value="5">Tubewell/ borehole</option>
+                        <option value="6">Spring</option>
+                        <option value="7">River/canal</option>
+                        <option value="8">Tank/pond/lake</option>
+                        <option value="9">Packaged/bottled water</option>
+                        <option value="0">Any sources</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="DrinkingWaterAvail">Availability of Drinking Water: </label>
+                      <select name="DrinkingWaterAvail" id="DrinkingWaterAvail" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Within premises</option>
+                        <option value="2">Near the premises</option>
+                        <option value="3">Away</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="LightingSource">Lighting Source:</label>
+                      <select name="LightingSource" id="LightingSource" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Electricity</option>
+                        <option value="2">Kerosene</option>
+                        <option value="3">Solar</option>
+                        <option value="4">Other oil</option>
+                        <option value="5">Any other</option>
+                        <option value="6">No lighting</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="LatrineAccess">Latrin Access: </label>
+                      <select name="LatrineAccess" id="LatrineAccess" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">YES, Exclusively for household use only</option>
+                        <option value="2">YES, Shared with other household</option>
+                        <option value="3">YES, Public latrine</option>
+                        <option value="4">NO, Open</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="LatrineType">Latrine Type:</label>
+                      <select name="LatrineType" id="LatrineType" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Flush/pour flush latrine connected to Piped sewer system</option>
+                        <option value="2">Flush/pour flush latrine connected to Septic tack</option>
+                        <option value="3">Flush/pour flush latrine connected to Other system</option>
+                        <option value="4">Twin Pit latrine With slab/ventilated improved pit</option>
+                        <option value="5">Twin Pit latrine Without slab/open pit</option>
+                        <option value="6">Single Pit latrine With slab/ventilated improved pit</option>
+                        <option value="7">Single Pit latrine Without slab/open pit</option>
+                        <option value="8">Service latrine Night soil removed by human</option>
+                        <option value="9">Service latrine Night soil serviced by animals</option>
+                        <option value="0">Night soil disposed into open drain</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label for="WasteWaterOutlet">Waste Water Outlet: </label>
+                      <select name="WasteWaterOutlet" id="WasteWaterOutlet" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Closed drainage</option>
+                        <option value="2">Open drainage</option>
+                        <option value="3">No drainage</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="BathingFacility">Bathing Fascility:</label>
+                      <select name="BathingFacility" id="BathingFacility" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">YES, Bathroom</option>
+                        <option value="2">YES, Enclosure without roof</option>
+                        <option value="3">NO</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="Kitchen">Cooking In Kitchen: </label>
+                      <select name="Kitchen" id="Kitchen" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Cooking in kitchen, has LPG/PNG Connection</option>
+                        <option value="2">Cooking in kitchen, Does not have LPG/PNG Connection</option>
+                        <option value="3">Cooking inside house, but not in kitchen, Has LPG/PNG Connection</option>
+                        <option value="4">Cooking inside house, but not in kitchen, does not have LPG/PNG Connection
+                        </option>
+                        <option value="5">Cooking in open/ outside house, Has LPG/PNG Connection</option>
+                        <option value="6">Cooking in open/ outside house, does not have LPG/PNG Connection</option>
+                        <option value="7">No cooking</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="KitchenFuel">Kitchen Fuel: </label>
+                      <select name="KitchenFuel" id="KitchenFuel" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Firewood</option>
+                        <option value="2">Crop residue</option>
+                        <option value="3">Cowding cake</option>
+                        <option value="4">Coal/lignite/charcoal</option>
+                        <option value="5">Kerosene</option>
+                        <option value="6">LPG/PNG</option>
+                        <option value="7">Electricity</option>
+                        <option value="8">Bio-gas</option>
+                        <option value="9">Solar</option>
+                        <option value="0">Any other</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="Radio">Radio:</label>
+                      <select name="Radio" id="Radio" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">YES, Traditional radio set</option>
+                        <option value="2">YES, on mobile/smartphone</option>
+                        <option value="3">YES, On any other device</option>
+                        <option value="4">NO</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="Television">Television: </label>
+                      <select name="Television" id="Television" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">YES, Doordarshan free dish</option>
+                        <option value="2">YES, DTH/Dish</option>
+                        <option value="3">YES, Cable connection</option>
+                        <option value="4">Any other</option>
+                        <option value="5">NO</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="Internet">Internet: </label>
+                      <select name="Internet" id="Internet" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">YES, On laptop/computer</option>
+                        <option value="2">YES, On mobile/smartphone</option>
+                        <option value="3">YES, On any other device</option>
+                        <option value="4">NO</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="ComputingDevice">Computing Device:</label>
+                      <select name="ComputingDevice" id="ComputingDevice" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">YES</option>
+                        <option value="2">NO</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="Phone">Phone: </label>
+                      <select name="Phone" id="Phone" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">YES, Landline only</option>
+                        <option value="2">YES, Mobile only, Smartphone</option>
+                        <option value="3">YES, Mobile only, Other basic mobile</option>
+                        <option value="4">YES, Both</option>
+                        <option value="5">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="TwoWheeler">Two Wheeler: </label>
+                      <select name="TwoWheeler" id="TwoWheeler" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Bicycle</option>
+                        <option value="2">Scooter/ Motorcycle/ Moped</option>
+                        <option value="3">Both</option>
+                        <option value="4">None</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="FourWheeler">Four Wheeler:</label>
+                      <select name="FourWheeler" id="FourWheeler" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">YES</option>
+                        <option value="2">NO</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="Cereal">Cereal: </label>
+                      <select name="Cereal" id="Cereal" class="form-control" required>
+                        <option value="ALL">All</option>
+                        <option value="1">Rice</option>
+                        <option value="2">Wheat</option>
+                        <option value="3">Jowar</option>
+                        <option value="4">Bajra</option>
+                        <option value="5">Maize</option>
+                        <option value="6">Any other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                      <label for="ContactNo">Contact No ("ALL" for All): </label>
+                      <input id="ContactNo" type="text" name="ContactNo" class="form-control" required>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-fill btn-primary" style="margin: auto;">Submit</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+</div>
+{% endblock %}
