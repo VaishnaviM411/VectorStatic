@@ -37,3 +37,23 @@ class houseListQueries(View):
             return render(request, 'houseListQueries.html')
         except:
             return render(request, 'login.html')
+
+class houseListQueryResult(View):
+    def get(self, request):
+        try:
+            group = request.user.groups.all()[0].name
+            if isAnalyst(group) == 0:
+                return render(request, 'login.html')
+            return render(request, 'houseListQueryResult.html')
+        except:
+            return render(request, 'login.html')
+
+class houseHoldQueryResult(View):
+    def get(self, request):
+        try:
+            group = request.user.groups.all()[0].name
+            if isAnalyst(group) == 0:
+                return render(request, 'login.html')
+            return render(request, 'houseHoldQueryResult.html')
+        except:
+            return render(request, 'login.html')
