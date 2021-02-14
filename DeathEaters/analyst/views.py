@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from surveyor.views import HouseListing
 from surveyor.views import HouseHolds
-from django.http import HttpResponsePermanentRedirect ,HttpResponseRedirect
+from django.http import HttpResponsePermanentRedirect ,HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.shortcuts import redirect
+import csv
 
 # Create your views here.
 def isAnalyst(group_name):
@@ -318,6 +319,22 @@ class houseHoldQueryResult(View):
 
         return render(request, 'houseHoldQueryResult.html',argss)
 
+    def post(self, request):
+        group = request.user.groups.all()[0].name
+        if isAnalyst(group) == 0:
+            return render(request, 'login.html')
+        try:
+            result = HouseHolds.objects.filter(**q1)
+        except:
+            result = None
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="houseHoldList.csv"'
+        writer = csv.writer(response)
+        writer.writerow(["First Name", "Middle Name", "Last Name", "State", "District", "Sub-District", "Village", "Ward Number", "Aadhar Number"])
+        for i in result:
+            writer.writerow([i.fname, i.mname, i.lname, i.state,i.district,i.subDistrict,i.village,i.wardNo,i.adhar])
+        return response
+
 
 
 
@@ -339,6 +356,22 @@ class houseListQueryResult(View):
         argss["totalResult"]=totalResult
         
         return render(request, 'houseListQueryResult.html',argss)
+
+    def post(self, request):
+        group = request.user.groups.all()[0].name
+        if isAnalyst(group) == 0:
+            return render(request, 'login.html')
+        try:
+            result = HouseListing.objects.filter(**q2)
+        except:
+            result = None
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="houseListingList.csv"'
+        writer = csv.writer(response)
+        writer.writerow(["State", "District", "Sub-District", "Village", "Ward Number","Head Name"])
+        for i in result:
+            writer.writerow([i.state,i.district,i.subDistrict,i.village,i.wardNo,i.HeadName])
+        return response
 
 
 
