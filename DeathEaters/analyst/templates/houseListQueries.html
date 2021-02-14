@@ -21,22 +21,8 @@
                 {% csrf_token %}
 
                 <div class="row">
-                  <div class="col-md-6 pr-md-1">
-                    <div class="form-group">
-                      <label for="BuildingNo">Building Number ("ALL" for All):</label>
-                      <input id="BuildingNo" type="text" name="BuildingNo" class="form-control" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 pl-md-1">
-                    <div class="form-group">
-                      <label for="CensusHouseNo">House Number ("ALL" for All):</label>
-                      <input id="CensusHouseNo" type="text" name="CensusHouseNo" class="form-control" required>
-                    </div>
-                  </div>
-                </div>
-
                 <div class="row">
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="FloorMaterial">Floor Material:</label>
                       <select name="FloorMaterial" id="FloorMaterial" class="form-control" required>
@@ -52,7 +38,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="WallMaterial">Wall Material:</label>
                       <select name="WallMaterial" id="WallMaterial" class="form-control" required>
@@ -71,7 +57,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="RoofMaterial">Roof Material:</label>
                       <select name="RoofMaterial" id="RoofMaterial" class="form-control" required>
@@ -118,15 +104,6 @@
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-md-6 pr-md-1">
-                    <div class="form-group">
-                      <label for="HeadName">Head Name ("ALL" for All): </label>
-                      <input id="HeadName" type="text" class="form-control" name="HeadName" required>
-                    </div>
-                  </div>
-                </div>
-
 
                 <div class="row">
                   <div class="col-md-6 pr-md-1">
@@ -158,7 +135,7 @@
                 <br>
 
                 <div class="row">
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="Ownership">House Ownership: </label>
                       <select name="Ownership" id="Ownership" class="form-control" required>
@@ -177,7 +154,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="MarriedCouples">Number Of Married Couples (-1 for All): </label>
                       <input id="MarriedCouples" type="Number" class="form-control" name="MarriedCouples" required>
@@ -237,7 +214,7 @@
                   </div>
                   <div class="col-md-6 pr-md-1">
                     <div class="form-group">
-                      <label for="LatrineAccess">Latrin Access: </label>
+                      <label for="LatrineAccess">Latrine Access: </label>
                       <select name="LatrineAccess" id="LatrineAccess" class="form-control" required>
                         <option value="ALL">All</option>
                         <option value="1">YES, Exclusively for household use only</option>
@@ -283,7 +260,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="BathingFacility">Bathing Fascility:</label>
                       <select name="BathingFacility" id="BathingFacility" class="form-control" required>
@@ -294,7 +271,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="Kitchen">Cooking In Kitchen: </label>
                       <select name="Kitchen" id="Kitchen" class="form-control" required>
@@ -310,7 +287,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="KitchenFuel">Kitchen Fuel: </label>
                       <select name="KitchenFuel" id="KitchenFuel" class="form-control" required>
@@ -331,7 +308,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="Radio">Radio:</label>
                       <select name="Radio" id="Radio" class="form-control" required>
@@ -343,7 +320,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="Television">Television: </label>
                       <select name="Television" id="Television" class="form-control" required>
@@ -356,7 +333,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="Internet">Internet: </label>
                       <select name="Internet" id="Internet" class="form-control" required>
@@ -371,7 +348,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="ComputingDevice">Computing Device:</label>
                       <select name="ComputingDevice" id="ComputingDevice" class="form-control" required>
@@ -381,7 +358,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="Phone">Phone: </label>
                       <select name="Phone" id="Phone" class="form-control" required>
@@ -394,7 +371,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="TwoWheeler">Two Wheeler: </label>
                       <select name="TwoWheeler" id="TwoWheeler" class="form-control" required>
@@ -409,7 +386,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="FourWheeler">Four Wheeler:</label>
                       <select name="FourWheeler" id="FourWheeler" class="form-control" required>
@@ -419,7 +396,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-md-4 pr-md-1">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <label for="Cereal">Cereal: </label>
                       <select name="Cereal" id="Cereal" class="form-control" required>
@@ -431,12 +408,6 @@
                         <option value="5">Maize</option>
                         <option value="6">Any other</option>
                       </select>
-                    </div>
-                  </div>
-                  <div class="col-md-4 pr-md-1">
-                    <div class="form-group">
-                      <label for="ContactNo">Contact No ("ALL" for All): </label>
-                      <input id="ContactNo" type="text" name="ContactNo" class="form-control" required>
                     </div>
                   </div>
                 </div>
