@@ -2,14 +2,19 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from surveyor.views import HouseListing
 from surveyor.views import HouseHolds
-from django.http import HttpResponsePermanentRedirect
+from django.http import HttpResponsePermanentRedirect ,HttpResponseRedirect
 from django.urls import reverse
+from django.shortcuts import redirect
+
 # Create your views here.
 def isAnalyst(group_name):
     if group_name == 'analyst_group':
         return 1
     else:
         return 0
+
+q1 ={}
+q2 ={}
 
 
 class analystPage(View):
@@ -34,7 +39,6 @@ class houseHoldQueries(View):
             
     
     def post(self,request):
-        try:
             group = request.user.groups.all()[0].name
             if isAnalyst(group) == 0:
                 return render(request, 'login.html')
@@ -60,7 +64,7 @@ class houseHoldQueries(View):
             statusOfAttendance = request.POST.get('statusOfAttendance')
             highestEDUAttained = request.POST.get('highestEDUAttained')
             workedLike = request.POST.get('workedLike')
-            workedAs = request.POST.get('workedAs')
+            # workedAs = request.POST.get('workedAs')
             describeWork = request.POST.get('describeWork')
             industryType = request.POST.get('industryType')
             workerClass = request.POST.get('workerClass')
@@ -81,88 +85,88 @@ class houseHoldQueries(View):
             totChildren = request.POST.get('totChildren')
 
             args = {}
-            if fname != 'All': 
+            if fname != 'ALL': 
                 args['fname'] =  fname
-            if mname != 'All': 
+            if mname != 'ALL': 
                 args['mname'] = mname  
-            if lname != 'All': 
+            if lname != 'ALL': 
                 args['lname'] =   lname
-            if state != 'All': 
+            if state != 'ALL': 
                 args['state'] =  state
-            if district  != 'All': 
+            if district  != 'ALL': 
                 args['district'] = district 
-            if subDistrict  != 'All': 
+            if subDistrict  != 'ALL': 
                 args['subDistrict'] = subDistrict
-            if village!= 'All':  
+            if village!= 'ALL':  
                 args['village'] = village  
-            if wardNo != 'All': 
+            if wardNo != 'ALL': 
                 args['wardNo'] =wardNo  
-            if adhar != 'All': 
+            if adhar != 'ALL': 
                 args['adhar'] =adhar  
-            if sex != 'All':
-                    args['sex'] =  sex
-            if dob  != 'All': 
+            if sex != 'ALL':
+                args['sex'] =  sex
+            if dob  != 'ALL': 
                 args['dob'] =dob  
-            if age != 'All': 
+            if age != 'ALL': 
                 args['age'] = age 
-            if religion != 'All':
+            if religion != 'ALL':
                 args['religion'] =religion   
-            if scst != 'All':
-                    args['scst'] = scst 
-            if scstType != 'All': 
+            if scst != 'ALL':
+                args['scst'] = scst 
+            if scstType != 'ALL': 
                 args['scstType'] =  scstType
-            if martialStatus != 'All': 
+            if martialStatus != 'ALL': 
                 args['martialStatus'] =  martialStatus
-            if disability!= 'All': 
+            if disability!= 'ALL': 
                 args['disability'] =  disability
-            if motherTongue != 'All': 
+            if motherTongue != 'ALL': 
                 args['motherTongue'] = motherTongue  
-            if literate != 'All': 
+            if literate != 'ALL': 
                 args['literate'] = literate 
-            if statusOfAttendance != 'All': 
+            if statusOfAttendance != 'ALL': 
                 args['statusOfAttendance'] =  statusOfAttendance
-            if highestEDUAttained != 'All': 
+            if highestEDUAttained != 'ALL': 
                 args['highestEDUAttained'] = highestEDUAttained 
-            if workedLike != 'All': 
+            if workedLike != 'ALL': 
                 args['workedLike'] =  workedLike
-            # if workedAs != 'All':  
+            # if workedAs != 'ALL':  
             #     args['workedAs'] = workedAs  
-            if describeWork != 'All':  
+            if describeWork != 'ALL':  
                 args['describeWork'] = describeWork 
-            if industryType!= 'All': 
+            if industryType!= 'ALL': 
                 args['industryType'] = industryType  
-            if workerClass != 'All':  
+            if workerClass != 'ALL':  
                 args['workerClass'] = workerClass 
-            if nonWorkerType != 'All':  
+            if nonWorkerType != 'ALL':  
                 args['nonWorkerType'] = nonWorkerType 
-            if findingWork != 'All': 
+            if findingWork != 'ALL': 
                 args['findingWork'] =  findingWork 
-            if disOfTravelInKm != 'All': 
+            if disOfTravelInKm != 'ALL': 
                 args['disOfTravelInKm'] = disOfTravelInKm  
-            if modeOfTravel != 'All': 
+            if modeOfTravel != 'ALL': 
                 args['modeOfTravel'] =  modeOfTravel 
-            if birthPlace != 'All': 
+            if birthPlace != 'ALL': 
                 args['birthPlace'] =  birthPlace 
-            if birthPlaceBool != 'All': 
+            if birthPlaceBool != 'ALL': 
                 args['birthPlaceBool'] = birthPlaceBool  
-            if placeOfLastResidence != 'All': 
+            if placeOfLastResidence != 'ALL': 
                 args['placeOfLastResidence'] = placeOfLastResidence  
-            if placeOfLastResidenceBool != 'All':
-                    args['placeOfLastResidenceBool'] =  placeOfLastResidenceBool
-            if lastMigrated != 'All': 
+            if placeOfLastResidenceBool != 'ALL':
+                args['placeOfLastResidenceBool'] =  placeOfLastResidenceBool
+            if lastMigrated != 'ALL': 
                 args['lastMigrated'] =  lastMigrated
-            if cameFrom != 'All': 
+            if cameFrom != 'ALL': 
                 args['cameFrom'] =  cameFrom
-            if durOfStayAfterMigration != 'All': 
+            if durOfStayAfterMigration != 'ALL': 
                 args['durOfStayAfterMigration'] = durOfStayAfterMigration 
-            if curChildren != 'All': 
+            if curChildren != 'ALL': 
                 args['curChildren'] =  curChildren
-            if totChildren!= 'All': 
+            if totChildren!= 'ALL': 
                 args['totChildren'] = totChildren
 
-            return HttpResponsePermanentRedirect(reverse('houseHoldQueryResult', args=(args,)))
-        except:
-            return render(request, 'login.html')
+            q1 = args 
+            return redirect('analyst:houseHoldQueryResult')
+        
 
 class houseListQueries(View):
 
@@ -177,148 +181,157 @@ class houseListQueries(View):
 
 
     def post(self, request):
-        try:
-            group = request.user.groups.all()[0].name
-            if isAnalyst(group) == 0:
-                return render(request, 'login.html')
-            state = request.POST.get('state')
-            district  = request.POST.get('district')
-            subDistrict  = request.POST.get('subDistrict')
-            village  = request.POST.get('village')
-            wardNo = request.POST.get('wardNo') 
-            
-            FloorMaterial = request.POST.get('FloorMaterial')
-            # print(FloorMaterial)
-            # FloorMaterial = FLOOR_CHOICES[int(FloorMaterial)][1],
-            
-            WallMaterial = request.POST.get('WallMaterial')
-            RoofMaterial = request.POST.get('RoofMaterial')
-            UseOfHouse =request.POST.get('UseOfHouse')
-            TotalResidents = request.POST.get('TotalResidents')
-            
-            HeadSex = request.POST.get('HeadSex')
-            HeadCaste = request.POST.get('HeadCaste')
-            Ownership = request.POST.get('Ownership')
-            DwellingRooms = request.POST.get('DwellingRooms')
-            MarriedCouples = request.POST.get('MarriedCouples')
-            DrinkingWaterSource = request.POST.get('DrinkingWaterSource')
-            DrinkingWaterAvail = request.POST.get('DrinkingWaterAvail')
-            LightingSource = request.POST.get('LightingSource')
-            LatrineAccess = request.POST.get('LatrineAccess')
-            LatrineType = request.POST.get('LatrineType')
-            WasteWaterOutlet = request.POST.get('WasteWaterOutlet')
-            BathingFacility = request.POST.get('BathingFacility')
-            Kitchen = request.POST.get('Kitchen')
-            KitchenFuel = request.POST.get('KitchenFuel')
-            Radio = request.POST.get('Radio')
-            Television = request.POST.get('Television')
-            Internet = request.POST.get('Internet')
-            ComputingDevice = request.POST.get('ComputingDevice')
-            Phone = request.POST.get('Phone')
-            TwoWheeler = request.POST.get('TwoWheeler')
-            FourWheeler = request.POST.get('FourWheeler')
-            Cereal = request.POST.get('Cereal')
-            query = {}
-            if state != 'All':
-                query['state']=state
-            if district != 'All':
-                query['district']=district
-            if village != 'All':
-                query['village']=village
-            if wardNo != 'All':
-                query['wardNo']=wardNo
-            if subDistrict != 'All':
-                query['subDistrict']=subDistrict
-            if FloorMaterial != 'All':
-                query['FloorMaterial']=FloorMaterial
-            if WallMaterial != 'All':
-                query['WallMaterial']=WallMaterial
-            if RoofMaterial != 'All':
-                query['RoofMaterial']=RoofMaterial
-            if TotalResidents != -1:
-                query['TotalResidents']=TotalResidents
-            if UseOfHouse !='All':
-                query['UseOfHouse']=UseOfHouse
-            if HeadSex != 'All':
-                query['HeadSex']=HeadSex
-            if HeadCaste != 'All':
-                query['HeadCaste']=HeadCaste
-            if Ownership != 'All':
-                query['Ownership']=Ownership
-            if DwellingRooms != -1:
-                query['Dwelling']=Dwelling
-            if MarriedCouples != -1:
-                query['MarriedCouples']=MarriedCouples
-            if DrinkingWaterSource != 'All':
-                query['DrinkingWaterSource']=DrinkingWaterSource
-            if LightingSource != 'All':
-                query['LightingSource']=LightingSource
-            if LatrineAccess != 'All':
-                query['LatrineAccess']=LatrineAccess
-            if LatrineType != 'All':
-                query['LatrineType']=LatrineType
-            if WasteWaterOutlet != 'All':
-                query['WasteWaterOutlet']=WasteWaterOutlet
-            if BathingFacility != 'All':
-                query['BathingFacility']=BathingFacility
-            if Kitchen != 'All':
-                query['Kitchen']=Kitchen
-            if KitchenFuel != 'All':
-                query['KitchenFuel']=KitchenFuel
-            if Radio != 'All':
-                query['Radio']=Radio
-            if Television != 'All':
-                query['Television']=Television
-            if Internet != 'All':
-                query['Internet']=Internet
-            if ComputingDevice != 'All':
-                query['ComputingDevice']=ComputingDevice
-            if Phone != 'All':
-                query['Phone']=Phone
-            if TwoWheeler != 'All':
-                query['TwoWheeler']=TwoWheeler
-            if FourWheeler != 'All':
-                query['FourWheeler']=FourWheeler
-            if Cereal != 'All':
-                query['Cereal']=Cereal
-            
-            print(query)
-            return render(request,'houseListQueries.html')
-            # return HttpResponsePermanentRedirect(reverse('houseListQueryResult', args=(query,)))
+        
+        group = request.user.groups.all()[0].name
+        if isAnalyst(group) == 0:
+            return render(request, 'login.html')
+        state = request.POST.get('state')
+        district  = request.POST.get('district')
+        subDistrict  = request.POST.get('subDistrict')
+        village  = request.POST.get('village')
+        wardNo = request.POST.get('wardNo') 
+        
+        FloorMaterial = request.POST.get('FloorMaterial')
+        # 
+        # FloorMaterial = FLOOR_CHOICES[int(FloorMaterial)][1],
+        
+        WallMaterial = request.POST.get('WallMaterial')
+        RoofMaterial = request.POST.get('RoofMaterial')
+        UseOfHouse =request.POST.get('UseOfHouse')
+        TotalResidents = request.POST.get('TotalResidents')
+        
+        HeadSex = request.POST.get('HeadSex')
+        HeadCaste = request.POST.get('HeadCaste')
+        Ownership = request.POST.get('Ownership')
+        DwellingRooms = request.POST.get('DwellingRooms')
+        MarriedCouples = request.POST.get('MarriedCouples')
+        DrinkingWaterSource = request.POST.get('DrinkingWaterSource')
+        DrinkingWaterAvail = request.POST.get('DrinkingWaterAvail')
+        LightingSource = request.POST.get('LightingSource')
+        LatrineAccess = request.POST.get('LatrineAccess')
+        LatrineType = request.POST.get('LatrineType')
+        WasteWaterOutlet = request.POST.get('WasteWaterOutlet')
+        BathingFacility = request.POST.get('BathingFacility')
+        Kitchen = request.POST.get('Kitchen')
+        KitchenFuel = request.POST.get('KitchenFuel')
+        Radio = request.POST.get('Radio')
+        Television = request.POST.get('Television')
+        Internet = request.POST.get('Internet')
+        ComputingDevice = request.POST.get('ComputingDevice')
+        Phone = request.POST.get('Phone')
+        TwoWheeler = request.POST.get('TwoWheeler')
+        FourWheeler = request.POST.get('FourWheeler')
+        Cereal = request.POST.get('Cereal')
+        query = {}
+        # print(state)
+        # if state != 'ALL':
+        #     query['state']=state
 
-        except:
-            return render(request,'houseListQueries.html')
+        # print(state)
+        # print(query['state'])
+
+        # if district != 'ALL':
+        #     query['district']=district
+        # if village != 'ALL':
+        #     query['village']=village
+        # if wardNo != 'ALL':
+        #     query['wardNo']=wardNo
+        # if subDistrict != 'ALL':
+        #     query['subDistrict']=subDistrict
+        if FloorMaterial != 'ALL':
+            query['FloorMaterial']=FloorMaterial
+        if WallMaterial != 'ALL':
+            query['WallMaterial']=WallMaterial
+        if RoofMaterial != 'ALL':
+            query['RoofMaterial']=RoofMaterial
+        if TotalResidents != '-1':
+            query['TotalResidents']=TotalResidents
+        if UseOfHouse !='ALL':
+            query['UseOfHouse']=UseOfHouse
+        if HeadSex != 'ALL':
+            query['HeadSex']=HeadSex
+        if HeadCaste != 'ALL':
+            query['HeadCaste']=HeadCaste
+        if Ownership != 'ALL':
+            query['Ownership']=Ownership
+        if DwellingRooms != '-1':
+            query['DwellingRooms']=DwellingRooms
+        if MarriedCouples != '-1':
+            query['MarriedCouples']=MarriedCouples
+        if DrinkingWaterSource != 'ALL':
+            query['DrinkingWaterSource']=DrinkingWaterSource
+        if LightingSource != 'ALL':
+            query['LightingSource']=LightingSource
+        if LatrineAccess != 'ALL':
+            query['LatrineAccess']=LatrineAccess
+        if LatrineType != 'ALL':
+            query['LatrineType']=LatrineType
+        if WasteWaterOutlet != 'ALL':
+            query['WasteWaterOutlet']=WasteWaterOutlet
+        if BathingFacility != 'ALL':
+            query['BathingFacility']=BathingFacility
+        if Kitchen != 'ALL':
+            query['Kitchen']=Kitchen
+        if KitchenFuel != 'ALL':
+            query['KitchenFuel']=KitchenFuel
+        if Radio != 'ALL':
+            query['Radio']=Radio
+        if Television != 'ALL':
+            query['Television']=Television
+        if Internet != 'ALL':
+            query['Internet']=Internet
+        if ComputingDevice != 'ALL':
+            query['ComputingDevice']=ComputingDevice
+        if Phone != 'ALL':
+            query['Phone']=Phone
+        if TwoWheeler != 'ALL':
+            query['TwoWheeler']=TwoWheeler
+        if FourWheeler != 'ALL':
+            query['FourWheeler']=FourWheeler
+        if Cereal != 'ALL':
+            query['Cereal']=Cereal
+        
+        q2 = query 
+        # print(query)
+        # result = HouseListing.objects.filter(**query)
+        # print(result)
+
+        return redirect('analyst:houseListQueryResult')
+
+    
 
 
 class houseHoldQueryResult(View):
-    def get(self, request,args, template_name='analyst/houseHoldQueryResult.html'):
-        print(args)
+    def get(self,request, template_name='analyst/houseHoldQueryResult.html'):
         try:
             group = request.user.groups.all()[0].name
             if isAnalyst(group) == 0:
                 return render(request, 'login.html')
-            result = HouseHolds.objects.filter(**args)
+            result = HouseHolds.objects.filter(**q1)
             argss = {}
             argss["result"]=result
 
-            return render(request, 'analyst/houseHoldQueryResult.html',args)
+            return render(request, 'analyst/houseHoldQueryResult.html',argss)
         except:
             return render(request,'login.html')
 
 
 
 class houseListQueryResult(View):
-    def get(self, request,args, template_name='analyst/houseListQueryResult.html'):
-        print(args)
-        try:
-            group = request.user.groups.all()[0].name
-            if isAnalyst(group) == 0:
-                return render(request, 'login.html')
-            result = HouseListing.objects.filter(**args)
-            argss = {}
-            argss["result"]=result
+    def get(self, request, template_name='analyst/houseListQueryResult.html'):
+        group = request.user.groups.all()[0].name
+        if isAnalyst(group) == 0:
+            return render(request, 'login.html')
+        
+        
+        result = HouseListing.objects.filter(**q2)
+        argss = {}
+        argss["result"]=result
+        
+        for i in result :
+            print(i)
+        return render(request, 'houseListQueryResult.html',argss)
 
-            return render(request, 'analyst/houseListQueryResult.html',args)
-        except:
-            return render(request,'login.html')
 
+
+    
