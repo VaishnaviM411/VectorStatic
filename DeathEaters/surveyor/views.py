@@ -39,7 +39,7 @@ class households(View):
     def post(self, request, template_name='household.html'):        
         user = request.user
         fname = request.POST.get('fname')
-        mname  = request.POST.get('mname ')
+        mname  = request.POST.get('mname')
         lname  = request.POST.get('lname')
         state = request.POST.get('state')
         district  = request.POST.get('district')
@@ -60,7 +60,7 @@ class households(View):
         statusOfAttendance = request.POST.get('statusOfAttendance')
         highestEDUAttained = request.POST.get('highestEDUAttained')
         workedLike = request.POST.get('workedLike')
-        workedAs = request.POST.get('workedAs')
+        # workedAs = request.POST.get('workedAs')
         describeWork = request.POST.get('describeWork')
         industryType = request.POST.get('industryType')
         workerClass = request.POST.get('workerClass')
@@ -69,21 +69,29 @@ class households(View):
         disOfTravelInKm = request.POST.get('disOfTravelInKm')
         modeOfTravel = request.POST.get('modeOfTravel')
         birthPlace = request.POST.get('birthPlace')
+        # print(workedAs)
         # True => born in india 
         birthPlaceBool = request.POST.get('birthPlaceBool')
+        if(birthPlaceBool=='True'):
+            birthPlaceBool = True
+        else : birthPlaceBool = False 
         placeOfLastResidence = request.POST.get('placeOfLastResidence')
+       
         # True => live in india 
         placeOfLastResidenceBool = request.POST.get('placeOfLastResidenceBool')
+        if(placeOfLastResidenceBool=='True'):
+            placeOfLastResidenceBool = True
+        else : placeOfLastResidenceBool = False 
         lastMigrated = request.POST.get('lastMigrated')
         cameFrom = request.POST.get('cameFrom')
-        durOfStayAfterMigration = request.POST.get('durOfStayAfterMigration ')
+        durOfStayAfterMigration = request.POST.get('durOfStayAfterMigration')
         curChildren = request.POST.get('curChildren')
         totChildren = request.POST.get('totChildren')
         householdobj = HouseHolds(
             user =user ,
-            mname= fname ,
-            lname  =      mname ,
-            fname       =      lname,
+            fname= fname ,
+            mname  =      mname ,
+            lname       =      lname,
             state         =    state ,
             district      =        district,  
             subDistrict    =          subDistrict,  
@@ -103,7 +111,7 @@ class households(View):
             statusOfAttendance    =         statusOfAttendance ,
             highestEDUAttained  =           highestEDUAttained ,
             workedLike       =      workedLike ,
-            workedAs           =  workedAs ,
+            # workedAs           =  workedAs ,
             describeWork          =   describeWork ,
             industryType         =   industryType,
             workerClass       =      workerClass ,
@@ -122,7 +130,7 @@ class households(View):
             totChildren        =    totChildren,
             )
         householdobj.save()
-
+        return render(request, 'household.html')
 
 
 

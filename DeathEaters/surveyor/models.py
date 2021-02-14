@@ -376,7 +376,7 @@ class HouseHolds(models.Model):
 
     
     workedLike = models.CharField(max_length=1000,choices= TYPE_OF_WORKER )
-    workedAs =  models.CharField(max_length=1000,choices= CLASS_OF_WORKER)
+    workedAs =  models.CharField(max_length=1000,choices= CATEGORY_OF_WORKER)
     describeWork = models.CharField(max_length=250)
     industryType = models.CharField(max_length=250)
     workerClass = models.CharField(max_length=1000,choices=CLASS_OF_WORKER)

@@ -159,8 +159,8 @@ class houseHoldQueries(View):
                 args['curChildren'] =  curChildren
             if totChildren!= 'All': 
                 args['totChildren'] = totChildren
-            queryResult = HouseListing.objects.filter(**args)
-            return render(request, 'houseHoldQueries.html')
+
+            return HttpResponsePermanentRedirect(reverse('houseHoldQueryResult', args=(args,)))
         except:
             return render(request, 'login.html')
 
@@ -287,8 +287,26 @@ class houseListQueries(View):
         except:
             return render(request, 'login.html')
 
-class houseHoldQueriesResult(View):
-    def get(self, request,args, template_name='analyst/houseHoldQueriesResult.html'):
+
+class houseHoldQueryResult(View):
+    def get(self, request,args, template_name='analyst/houseHoldQueryResult.html'):
+        print(args)
+        try:
+            group = request.user.groups.all()[0].name
+            if isAnalyst(group) == 0:
+                return render(request, 'login.html')
+            result = HouseHolds.objects.filter(**args)
+            argss = {}
+            argss["result"]=result
+
+            return render(request, 'analyst/houseHoldQueryResult.html',args)
+        except:
+            return render(request,'login.html')
+
+
+
+class houseListQueryResult(View):
+    def get(self, request,args, template_name='analyst/houseListQueryResult.html'):
         print(args)
         try:
             group = request.user.groups.all()[0].name
@@ -298,6 +316,7 @@ class houseHoldQueriesResult(View):
             argss = {}
             argss["result"]=result
 
-            return render(request, 'analyst/houseHoldQueriesResult.html',args)
+            return render(request, 'analyst/houseListQueryResult.html',args)
         except:
             return render(request,'login.html')
+
