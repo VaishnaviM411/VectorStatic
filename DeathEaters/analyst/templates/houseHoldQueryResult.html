@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="page-header header-filter" data-parallax="true"
+    style="background-image: url('/static/assets/img/hawa-mahal.jpg');"></div>
+<div class="main main-raised">
+    <div class="profile-content">
+        <div class="container">
+            <div class="card">
+                <div class="card-text">
+                    <h2 class="title" align="center" style="color:purple;">House-Hold Queries</h2>
+                </div>
+                <br>
+                <p style="text-align: center; font-size: 1rem" class="text-primary">{{error_message}}</p>
+                <br>
+                <div class="card-text">
+                    <h3 class="title" align="center" style="color:purple;">Total Results: {{totalResult}}</h3>
+                </div>
+                <br>
+                <div class="card-body">
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-fill btn-rose btn-lg" style="margin: auto;">Download
+                                CSV</button>
+                        </div>
+                    </form>
+                    <br><br>
+                    {% if result %}
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">State</th>
+                                <th scope="col">District</th>
+                                <th scope="col">Sub-District</th>
+                                <th scope="col">Village</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in result %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{i.fname}} {{i.mname}} {{i.lname}} </td>
+                                <td>{{i.state}}</td>
+                                <td>{{i.district}}</td>
+                                <td>{{i.subDistrict}}</td>
+                                <td>{{i.village}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

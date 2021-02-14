@@ -298,22 +298,26 @@ class houseListQueries(View):
 
         return redirect('analyst:houseListQueryResult')
 
-    
-
 
 class houseHoldQueryResult(View):
-    def get(self,request, template_name='analyst/houseHoldQueryResult.html'):
-        try:
-            group = request.user.groups.all()[0].name
-            if isAnalyst(group) == 0:
-                return render(request, 'login.html')
-            result = HouseHolds.objects.filter(**q1)
-            argss = {}
-            argss["result"]=result
+    def get(self,request, template_name='houseHoldQueryResult.html'):
+        group = request.user.groups.all()[0].name
+        if isAnalyst(group) == 0:
+            return render(request, 'login.html')
 
-            return render(request, 'analyst/houseHoldQueryResult.html',argss)
+        try:
+            result = HouseHolds.objects.filter(**q1)
+            totalResult = len(result)
         except:
-            return render(request,'login.html')
+            result = None
+            totalResult = 0
+        argss = {}
+
+        argss["result"]=result
+        argss["totalResult"]=totalResult
+
+        return render(request, 'houseHoldQueryResult.html',argss)
+
 
 
 
@@ -323,13 +327,17 @@ class houseListQueryResult(View):
         if isAnalyst(group) == 0:
             return render(request, 'login.html')
         
-        
-        result = HouseListing.objects.filter(**q2)
+        try:
+            result = HouseListing.objects.filter(**q2)
+            totalResult = len(result)
+        except:
+            result = None
+            totalResult = 0
+
         argss = {}
         argss["result"]=result
+        argss["totalResult"]=totalResult
         
-        for i in result :
-            print(i)
         return render(request, 'houseListQueryResult.html',argss)
 
 

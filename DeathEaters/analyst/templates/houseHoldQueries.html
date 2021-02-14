@@ -1,0 +1,526 @@
+{% extends 'base.html' %}
+{% block content %}
+   <div class="page-header header-filter" data-parallax="true"
+  style="background-image: url('/static/assets/img/dance.jpeg');"></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+
+
+                <div class="row container">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="">
+                                <h2 class="title" align="center" style="color:purple;">House-Hold Queries</h2>
+                            </div>
+                            <br>
+                            <p style="text-align: center; font-size: 1rem" class="text-primary">{{error_message}}</p>
+                            <br>
+                            <div class="card-body">
+                                <form role="form" method="post">
+                                    {% csrf_token %}
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="fname">First Name: </label>
+                                                <input id="fname" type="text" class="form-control" name="fname" required="required" />
+                                            </div>
+                                        </div>  
+                                    </div>                              
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="mname">Middle Name: </label>
+                                                <input id="mname" type="text" class="form-control" name="mname"   required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="lname">Last Name: </label>
+                                                <input id="lname" type="text" class="form-control" name="lname" required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="state">State: </label>
+                                                <input id="state" type="text" class="form-control" name="state" required="required" />
+                                            </div>
+                                        </div>  
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="district">District: </label>
+                                                <input id="district" type="text" class="form-control" name="district"   required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="subDistrict">Sub-District: </label>
+                                                <input id="subDistrict" type="text" class="form-control" name="subDistrict" required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="village">Village: </label>
+                                                <input id="village" type="text" class="form-control" name="village" required="required" />
+                                            </div>
+                                        </div>      
+                                    </div>
+
+                                    <div class="row">                                                               
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="wardNo">Ward No (-1 for All): </label>
+                                                <input id="wardNo" type="Number" class="form-control" name="wardNo"   required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="adhar">Adhar (-1 for All): </label>
+                                                <input id="adhar" type="Number" class="form-control" name="adhar" required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="sex"> Sex: </label>
+                                                <select name="sex" class="form-control" id="sex"  required="required">
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">Female</option>
+                                                    <option value="2">Male</option>
+                                                    <option value="3">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                   <!--  <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="dob">DOB (-1 for All): </label>
+                                                <input id="dob" type="date" class="form-control" name="dob"  required="required" />
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="age">Age (-1 for All): </label>
+                                                <input id="age" type="Number" class="form-control" name="age"  required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="scstType" style="margin: auto">SC-ST Type :</label>
+                                                <input type="text" name="scstType" id="scstType" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="scst">Cast choices :</label>
+                                                <select name="scst" id="scst" class="form-control" required="required">
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">Scheduled-Caste</option>
+                                                    <option value="2">Scheduled-Tribe</option>
+                                                    <option value="3">None</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="religion">Religion choices :</label>
+                                                <select class="form-control" name="religion" id="religion" required="required">
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">Hindu</option>
+                                                    <option value="2">Muslim</option>
+                                                    <option value="3">Christian</option>
+                                                    <option value="4">Sikh</option>
+                                                    <option value="5">Buddhist</option>
+                                                    <option value="6">Jain</option>
+
+                                                </select>
+                                            </div>
+                                         </div>  
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="martialStatus">Martial Status : </label>
+                                                <select name="martialStatus" id="martialStatus" class="form-control" required="required">
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">Never-Married</option>
+                                                    <option value="2">Currently-Married'</option>
+                                                    <option value="3">Widowed</option>
+                                                    <option value="4">Separated</option>
+                                                    <option value="5">Divorced</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="disability">Disability choices :</label>
+                                                <select name="disability" id="disability" class="form-control" required="required"> 
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">Seeing</option>
+                                                    <option value="2">Hearing</option>
+                                                    <option value="3">Speech</option>
+                                                    <option value="4">Movement</option>
+                                                    <option value="5">Mental-Retardness'</option>
+                                                    <option value="6">Mental-Illness</option>
+                                                    <option value="7">Multiple-Disability'</option>
+                                                    <option value="8">Other</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="motherTongue">Mother Tongue : </label>
+                                                <input id="motherTongue" type="text" class="form-control" name="motherTongue" required="required"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label >Literate :</label><br>
+                                                    <input type="radio" style="margin-left: 30px;" id="all" name="literate" value="ALL">
+                                                    <label for="literate" style="padding-right: 40px;">All</label>
+                                                    <input type="radio" style="margin-left: 30px;" id="literate" name="literate" value="True">
+                                                    <label for="literate" style="padding-right: 40px;">Yes</label>
+                                                    <input type="radio" id="illiterate" name="literate" value="False">
+                                                    <label for="illiterate">No</label>                                                     
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="statusOfAttendance" align="center">State of Attendence : </label><br>
+                                                <input type="radio" style="margin-left: 30px;" id="All" name="statusOfAttendance" value="ALL">
+                                                <label for="All" style="padding-right: 40px;">ALL</label>
+                                                <input type="radio" style="margin-left: 30px;" id="pub" name="statusOfAttendance" value="True">
+                                                <label for="pub" style="padding-right: 40px;">Public</label>
+                                                <input type="radio" id="pri" name="statusOfAttendance" value="False">
+                                                <label for="pri">Private</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="highestEDUAttained">Highest Qualification :</label>
+                                                <select name="highestEDUAttained" id="highestEDUAttained" class="form-control" required="required">
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">School</option>
+                                                    <option value="2">College</option>
+                                                    <option value="3">Vocational</option>
+                                                    <option value="4">Special Institution For Disabled</option>
+                                                    <option value="5">Literacy-Centre</option>
+                                                    <option value="6">Other-Institution</option>
+                                                    <option value="7">None</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">                                      
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="workerAs">Category of Worker : </label>
+                                                <select name="workerAs" id="workerAs" class="form-control">
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">Cultivator</option>
+                                                    <option value="2">Agricultural-Labourer</option>
+                                                    <option value="3">Work In household industry</option>
+                                                    <option value="4">Other</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="workedLike">Type of worker :</label>
+                                                <select name="workedLike" id="workedLike" class="form-control" required="required" >
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">Main-Worker</option>
+                                                    <option value="2">Marginal-Worker</option>
+                                                    <option value="3">Non-Worker</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="describeWork">Describe Work : </label>
+                                                <input id="describeWork" type="text" class="form-control" name="describeWork" />
+                                            </div>
+                                       </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="industryType">Industry type : </label>
+                                                <input id="industryType" type="text" class="form-control" name="industryType" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="workerClass">Class of worker : </label>
+                                                <select name="workerClass" id="workerClass" class="form-control">
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">Employer</option>
+                                                    <option value="2">Employee</option>
+                                                    <option value="3">Single-Worker</option>
+                                                    <option value="4">Family-Worker</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="nonWorkerType">Non worker type : </label>
+                                                <select name="nonWorkerType" id="workerClass" class="form-control required="required>
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">Student</option>
+                                                    <option value="2">Household-Duties</option>
+                                                    <option value="3">Dependent</option>
+                                                    <option value="4">Pensioner</option>
+                                                    <option value="5">Rentier</option>
+                                                    <option value="6">Beggar</option>
+                                                    <option value="7">Other</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                         <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Finding Work :</label><br>
+                                                    <input type="radio" style="margin-left: 30px;" id="work" name="findingWork" value="ALL">
+                                                    <label for="work" style="padding-right: 40px;">All</label>
+                                                    <input type="radio" style="margin-left: 30px;" id="yes" name="findingWork" value="True">
+                                                    <label for="yes" style="padding-right: 40px;">Yes</label>
+                                                    <input type="radio" id="no" name="findingWork" value="False">
+                                                    <label for="no">No</label>                                                         
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="disOfTravelInKm">Distance travelled for work : </label>
+                                                <input id="disOfTravelInKm" type="Number" step="0.01" class="form-control" name="disOfTravelInKm"required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="modeOfTravel">Mode of travel : </label>
+                                                <select name="modeOfTravel" id="modeOfTravel" class="form-control" required="required">
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">On Foot</option>
+                                                    <option value="2">Bicycle</option>
+                                                    <option value="3">Moped/Scooter/Motor-Cycle</option>
+                                                    <option value="4">Car/Jeep/VAN </option>
+                                                    <option value="5">Literacy Centre</option>
+                                                    <option value="6">Other Institution</option>
+                                                    <option value="7">None</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="birthPlace">Birthplace :</label>
+                                                <input id="birthPlace" type="text" class="form-control" name="birthPlace"  required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Born In India :</label><br>
+                                                    <input type="radio" style="margin-left: 30px;" id="born" name="birthplaceBool" value="ALL">
+                                                    <label for="born" style="padding-right: 40px;">All</label>
+                                                    <input type="radio" style="margin-left: 30px;" id="yes" name="birthplaceBool" value="True">
+                                                    <label for="yes" style="padding-right: 40px;">Yes</label>
+                                                    <input type="radio" id="no" name="birthplaceBool" value="False">
+                                                    <label for="no">No</label>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="placeOfLastResidence">Place of last residence : </label>
+                                                <input id="placeOfLastResidence" type="text" class="form-control" name="placeOfLastResidence" required="required" />
+                                            </div>
+                                        </div>                                        
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Live In India :</label><br>
+                                                    <input type="radio" style="margin-left: 30px;" id="place" name="placeOfLastResidenceBool" value="ALL">
+                                                    <label for="place" style="padding-right: 40px;">All</label>
+                                                    <input type="radio" style="margin-left: 30px;" id="yes" name="placeOfLastResidenceBool" value="True">
+                                                    <label for="yes" style="padding-right: 40px;">Yes</label>
+                                                    <input type="radio" id="no" name="placeOfLastResidenceBool" value="False">
+                                                    <label for="no">No</label>                                                                                           
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label>Last migrated : </label><br>
+                                                    <input type="radio" style="margin-left: 30px;" id="last" name="lastMigrated" value="ALL">
+                                                    <label for="last" style="padding-right: 40px;">All</label>
+                                                    <input type="radio" style="margin-left: 30px;" id="yes" name="lastMigrated" value="True">
+                                                    <label for="yes" style="padding-right: 40px;">Yes</label>
+                                                    <input type="radio" id="no" name="lastMigrated" value="False">
+                                                    <label for="no">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="cameFrom">Came from : </label>
+                                                <select name="cameFrom" id="cameFrom" class="form-control" required="required">
+                                                    <option value="ALL">All</option>
+                                                    <option value="1">Rural</option>
+                                                    <option value="2">Urban</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="durOfStayAfterMigration">Duration of stay after migration (-1 for All):
+                                                </label>
+                                                <input id="durOfStayAfterMigration" type="Number" class="form-control" name="durOfStayAfterMigration" required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="curChildren">current Children: </label>
+                                                <input id="curChildren" type="Number" class="form-control" name="curChildren"  required="required"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 pr-md-1">
+                                            <div class="form-group">
+                                                <label for="totChildren">Total Children: </label>
+                                                <input id="totChildren" type="Number" class="form-control" name="totChildren"  required="required"/>
+                                            </div>
+                                        </div>     
+                                    </div> -->
+
+
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-fill btn-primary btn-lg" style="margin:auto;">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endblock %}
