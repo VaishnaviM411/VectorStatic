@@ -125,8 +125,8 @@ class houseHoldQueries(View):
                 args['highestEDUAttained'] = highestEDUAttained 
             if workedLike != 'All': 
                 args['workedLike'] =  workedLike
-            if workedAs != 'All':  
-                args['workedAs'] = workedAs  
+            # if workedAs != 'All':  
+            #     args['workedAs'] = workedAs  
             if describeWork != 'All':  
                 args['describeWork'] = describeWork 
             if industryType!= 'All': 
@@ -235,7 +235,7 @@ class houseListQueries(View):
                 query['WallMaterial']=WallMaterial
             if RoofMaterial != 'All':
                 query['RoofMaterial']=RoofMaterial
-            if TotalResidents != 'All':
+            if TotalResidents != -1:
                 query['TotalResidents']=TotalResidents
             if UseOfHouse !='All':
                 query['UseOfHouse']=UseOfHouse
@@ -245,9 +245,9 @@ class houseListQueries(View):
                 query['HeadCaste']=HeadCaste
             if Ownership != 'All':
                 query['Ownership']=Ownership
-            if DwellingRooms != 'All':
+            if DwellingRooms != -1:
                 query['Dwelling']=Dwelling
-            if MarriedCouples != 'All':
+            if MarriedCouples != -1:
                 query['MarriedCouples']=MarriedCouples
             if DrinkingWaterSource != 'All':
                 query['DrinkingWaterSource']=DrinkingWaterSource
@@ -282,10 +282,12 @@ class houseListQueries(View):
             if Cereal != 'All':
                 query['Cereal']=Cereal
             
-            return HttpResponsePermanentRedirect(reverse('houseListQueryResult', args=(query,)))
+            print(query)
+            return render(request,'houseListQueries.html')
+            # return HttpResponsePermanentRedirect(reverse('houseListQueryResult', args=(query,)))
 
         except:
-            return render(request, 'login.html')
+            return render(request,'houseListQueries.html')
 
 
 class houseHoldQueryResult(View):
