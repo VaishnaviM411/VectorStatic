@@ -19,6 +19,7 @@ We plan to **optimise and digitise** the process for easy input and **hassle-fre
 - Analyser Creds:
   - <code>username: Kshitij_Sabale
 password: Sabale#123</code>
+- The Analyst can then Download the CSV of the Required Population.
 
 ## Technologies Used:
 - Backend
