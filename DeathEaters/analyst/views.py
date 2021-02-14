@@ -34,7 +34,7 @@ class houseHoldQueries(View):
             group = request.user.groups.all()[0].name
             if isAnalyst(group) == 0:
                 return render(request, 'login.html')
-            return render(request,'houseListQueries.html')
+            return render(request,'houseHoldQueries.html')
         except:
             return render(request,'login.html')
             
