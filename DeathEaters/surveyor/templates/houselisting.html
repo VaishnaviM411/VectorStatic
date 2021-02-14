@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="page-header header-filter" data-parallax="true"
-  style="background-image: url('/static/assets/img/akshardham.jpg');"></div>
+  style="background-image: url('../assets/img/city-profile.jpg');"></div>
 <div class="main main-raised">
   <div class="profile-content">
     <div class="container">
@@ -19,7 +19,42 @@
             <div class="card-body">
               <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-
+                <div class="row">
+                                        <div class="col-md-4 pl-md-1">
+                                            <div class="form-group">
+                                                <label for="state">State: </label>
+                                                <input id="state" type="text" class="form-control" name="state" required="required" />
+                                            </div>
+                                        </div>                                
+                                    
+                                        <div class="col-md-4 pl-md-1">
+                                            <div class="form-group">
+                                                <label for="district">District: </label>
+                                                <input id="district" type="text" class="form-control" name="district"   required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 pl-md-1">
+                                            <div class="form-group">
+                                                <label for="subDistrict">Sub-District: </label>
+                                                <input id="subDistrict" type="text" class="form-control" name="subDistrict" required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 pl-md-1">
+                                            <div class="form-group">
+                                                <label for="village">Village: </label>
+                                                <input id="village" type="text" class="form-control" name="village" required="required" />
+                                            </div>
+                                        </div>                                
+                                    
+                                        <div class="col-md-4 pl-md-1">
+                                            <div class="form-group">
+                                                <label for="wardNo">Ward No: </label>
+                                                <input id="wardNo" type="text" class="form-control" name="wardNo"   required="required" />
+                                            </div>
+                                        </div>
+                                        </div>
                 <div class="row">
                   <div class="col-md-6 pr-md-1">
                     <div class="form-group">

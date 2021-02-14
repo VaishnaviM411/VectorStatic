@@ -138,6 +138,11 @@ class houselisting(View):
             return render(request, 'login.html')
 
     def post(self, request, template_name='houselisting.html'):
+        state = request.POST.get('state')
+        district  = request.POST.get('district')
+        subDistrict  = request.POST.get('subDistrict')
+        village  = request.POST.get('village')
+        wardNo = request.POST.get('wardNo') 
         BuildingNo = request.POST.get('BuildingNo')
         FloorMaterial = request.POST.get('FloorMaterial')
         # print(FloorMaterial)
@@ -173,6 +178,11 @@ class houselisting(View):
         ContactNo = request.POST.get('ContactNo')
 
         house = HouseListing(
+        state         =    state ,
+        district      =        district,  
+        subDistrict    =          subDistrict,  
+        village     =         village  ,
+        wardNo      =       wardNo ,
         BuildingNo = BuildingNo,
         CensusHouseNo = CensusHouseNo,
         FloorMaterial = FloorMaterial,

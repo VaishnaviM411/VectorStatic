@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+#User._meta.get_field('email')._unique = True
+
 from django.utils import timezone
 import datetime
 from django.core.validators import MaxValueValidator
@@ -399,7 +401,11 @@ class HouseHolds(models.Model):
 
 class HouseListing(models.Model):
 
-    
+    state = models.CharField(default= 'UP',max_length=100)
+    district = models.CharField(default='Pune',max_length=100)
+    subDistrict = models.CharField(default='chincwad',max_length=100)
+    village = models.CharField(default='chincwad',max_length=100)
+    wardNo = models.IntegerField(default=0)
     BuildingNo = models.CharField(max_length=10)
     CensusHouseNo = models.CharField(max_length=1000,null=True)
     FloorMaterial = models.CharField(max_length=1000, choices=FLOOR_CHOICES)
