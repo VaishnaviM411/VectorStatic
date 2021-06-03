@@ -26,7 +26,8 @@ password: Sabale#123</code>
   - Django
   - Python
 - Frontend
-  - HTML/CSS/JS
+  - HTML
+  - CSS/JS
   - Material UI
   - Bootstrap
 
